@@ -2,11 +2,15 @@ import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import './NavBar.css';
 import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
 
 const NavBar = () => {
 
-      const userInfo=use(AuthContext)
-      console.log('nav',userInfo);
+      const userInfo=use(AuthContext);
+      console.log(userInfo);
+
+      // const userInfo=use(AuthContext)
+      // console.log('nav',userInfo);
     const links=<>
         <li><NavLink to="/" >Home</NavLink></li>
         <li><NavLink to="/login" >Login</NavLink></li>

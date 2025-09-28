@@ -1,10 +1,32 @@
 import React from 'react';
 import { AuthContext } from './AuthContext';
+import { auth } from '../firebase.init';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 
 const AuthProvider = ({children}) => {
 
+
+    const createUser=(email,password)=>{
+        return createUserWithEmailAndPassword(auth,email,password);
+    };
+
+    const signInUser=(email,password)=>{
+        return signInWithEmailAndPassword(auth,email,password)
+    }
+         
+    onAuthStateChanged(auth,(currentUser)=>{
+       if(currentUser){
+        console.log('has current user',currentUser);
+       }
+       else{
+        console.log('current user',currentUser);
+       }
+    })
+    
     const userInfo={
-        email:'pot@alu.com'
+         createUser,
+         signInUser
+         
     }
     return (
         <AuthContext value={userInfo}>
